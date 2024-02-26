@@ -1,0 +1,5 @@
+ttkbootstrap @ git+https://github.com/israel-dryer/ttkbootstrap
+click
+selenium
+webdriver-manager
+python-dotenv
