@@ -8,7 +8,7 @@ from wifi_checker import term_main as check_wifi
 
 
 @click.command()
-def main():
+def main_app():
     profile_path = Path(getenv("HOMEPATH")).resolve() / ".pywich"
     if profile_path.exists():
         print("Profile config found")
@@ -30,4 +30,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main_app()
