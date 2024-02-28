@@ -4,7 +4,7 @@ from pathlib import Path
 import click
 from dotenv import dotenv_values
 
-from wifi_checker import term_main as check_wifi
+from .wifi_checker import term_main as check_wifi
 
 
 @click.command()
