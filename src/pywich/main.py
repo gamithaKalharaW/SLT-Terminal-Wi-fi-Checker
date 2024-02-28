@@ -13,7 +13,6 @@ def main_app():
     if profile_path.exists():
         print("Profile config found")
         values = dotenv_values(profile_path)
-        print(values)
         username: str = values["NAME"]
         password: str = values["PASSWORD"]
         check_wifi(username, password)
