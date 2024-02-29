@@ -20,4 +20,6 @@ A terminal based Wi-fi checker application for SLT broadband connections.
 ```powershell
 pywhich
 ```
+## TODO
+- Fix iconphoto access error
 
