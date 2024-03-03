@@ -6,9 +6,16 @@ from dotenv import dotenv_values
 
 from .wifi_checker import term_main as check_wifi
 
+# NOTE: to be synced with pyproject.toml version field
+VERSION = "0.1.1"
 
+
+@click.option("--version/-V", default=False)
 @click.command()
-def main_app():
+def main_app(version):
+    if version:
+        print(VERSION)
+        exit(0)
     profile_path = Path(getenv("HOMEPATH")).resolve() / ".pywich"
     if profile_path.exists():
         print("Profile config found")
