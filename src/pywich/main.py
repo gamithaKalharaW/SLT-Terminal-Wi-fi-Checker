@@ -9,12 +9,24 @@ from .wifi_checker import term_main as check_wifi
 # NOTE: to be synced with pyproject.toml version field
 VERSION = "0.1.1"
 
+HELP = """
+===== PyWiCh ===== 
+This is a terminal application meant to be used with MySLT portal
+The following options are implemented:
+    --help       Show this help message
+    --version    Show application version
+"""
 
-@click.option("--version/-V", default=False)
+
+@click.option("--version", is_flag=True)
+@click.option("--help", is_flag=True)
 @click.command()
-def main_app(version):
+def main_app(version, help):
     if version:
         print(VERSION)
+        exit(0)
+    if help:
+        print(HELP)
         exit(0)
     profile_path = Path(getenv("HOMEPATH")).resolve() / ".pywich"
     if profile_path.exists():
