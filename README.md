@@ -1,7 +1,7 @@
 
 # SLT Terminal Wi-fi Checker
 
-A terminal based Wi-fi checker application for SLT broadband connections.
+A terminal based Wi-fi usage checker application for SLT broadband connections.
 
 ## Installation
 
