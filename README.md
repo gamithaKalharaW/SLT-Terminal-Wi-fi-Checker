@@ -8,12 +8,12 @@ A terminal based Wi-fi usage checker application for SLT broadband connections.
 - Install with `pip`
 
 ```cmd
-pip install git+https://github.com/gamithaKalharaW/SLT-Terminal-Wi-fi-Checker
+pip install git+https://github.com/gamithaKalharaW/Unofficial-SLT-Terminal-Wi-fi-Usage-Checker
 ```
 
 - Install with `pipx`(***Recomended***)
 ```cmd
-pipx install git+https://github.com/gamithaKalharaW/SLT-Terminal-Wi-fi-Checker
+pipx install git+https://github.com/gamithaKalharaW/Unofficial-SLT-Terminal-Wi-fi-Usage-Checker
 ```
 ## Usage/Examples
 
