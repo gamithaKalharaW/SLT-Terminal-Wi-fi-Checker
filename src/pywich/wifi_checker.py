@@ -1,11 +1,7 @@
-import hashlib
-import os
 import time
 from datetime import date
-from getpass import getpass
 from pathlib import Path
 
-import click
 import ttkbootstrap as ttk
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
