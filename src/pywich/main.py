@@ -13,7 +13,7 @@ from selenium.webdriver.chrome.service import Service
 
 
 # NOTE: to be synced with pyproject.toml version field
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 
 HELP = """
 ===== PyWiCh ===== 
