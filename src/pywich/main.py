@@ -13,7 +13,7 @@ from selenium.webdriver.chrome.service import Service
 
 
 # NOTE: to be synced with pyproject.toml version field
-VERSION = "0.1.2"
+__version__ = "0.1.2"
 
 HELP = """
 ===== PyWiCh ===== 
@@ -29,7 +29,7 @@ The following options are implemented:
 @click.command()
 def main_app(version, help):
     if version:
-        print(VERSION)
+        print(__version__)
         exit(0)
     if help:
         print(HELP)
