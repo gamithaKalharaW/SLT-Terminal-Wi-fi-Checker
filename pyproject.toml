@@ -143,6 +143,9 @@ pywich = "pywich:main_app"
 [tool.setuptools]
 # If there are data files included in your packages that need to be
 # installed, specify them here.
+[tool.setuptools.package-dir]
+pywich = "src"
+
 [tool.setuptools.dynamic]
 version = {attr = "pywich.__version__"}
 
