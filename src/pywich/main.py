@@ -59,7 +59,9 @@ def main_app(version, help):
 def check_wifi(username: str, password: str, driver_path: str | Path):
 
     scriptdir = Path(__file__).parent
-    wifi_data = get_usage(username=username, password=password, driver_path=driver_path)
+    wifi_data = get_usage(
+        username=username, password=password, driver_path=driver_path
+    )
     date_data = get_date()
     app = App(
         size=(850, 450),
@@ -83,14 +85,15 @@ def get_usage(
     driver_path: str | None = None,
 ):
     def get_element(opt: str, path: str, driver):
-        # repeats = 0
-        while True:
+        repeats = 0
+        ele = None
+        while repeats < 20:
             try:
                 ele = driver.find_element(opt, path)
                 break
             except Exception:
                 time.sleep(0.5)
-                # repeats += 1
+                repeats += 1
         return ele
 
     site_url = "https://myslt.slt.lk"
@@ -122,7 +125,8 @@ def get_usage(
     sign_btn.click()
 
     pop_up = get_element("xpath", "/html/body/div[6]/div/div/span/i", driver)
-    pop_up.click()
+    if pop_up is not None:
+        pop_up.click()
 
     used_amount1 = get_element(
         "xpath",
@@ -258,7 +262,9 @@ class App(ttk.Window):
             date_data=self.date_data,
             wifi_data=self.wifi_data,
         )
-        free_meter_frame.place(relx=1, rely=0, relheight=1, relwidth=0.3, anchor="ne")
+        free_meter_frame.place(
+            relx=1, rely=0, relheight=1, relwidth=0.3, anchor="ne"
+        )
 
         self.full_meter = ttk.Meter(
             content_frame,
@@ -322,7 +328,9 @@ class MeterFrame(ttk.Frame):
         self.target_average_lbl = ttk.Label(self, text="Target average: 10000")
         self.target_average_lbl.place(relx=0.5, rely=0.72, anchor="center")
 
-        self.available_average_lbl = ttk.Label(self, text="Available average: 10000")
+        self.available_average_lbl = ttk.Label(
+            self, text="Available average: 10000"
+        )
         self.available_average_lbl.place(relx=0.5, rely=0.8, anchor="center")
 
         self.set_values()
