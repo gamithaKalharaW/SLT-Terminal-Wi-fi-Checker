@@ -24,16 +24,10 @@ The following options are implemented:
 """
 
 
-@click.option("--version", is_flag=True)
-@click.option("--help", is_flag=True)
 @click.command()
-def main_app(version, help):
-    if version:
-        print(__version__)
-        exit(0)
-    if help:
-        print(HELP)
-        exit(0)
+@click.version_option(version=__version__, prog_name="PyWiCh")
+@click.help_option(HELP)
+def main_app():
     driver_path = Path(getenv("HOMEPATH")).resolve() / "chromedriver.exe"
 
     profile_path = Path(getenv("HOMEPATH")).resolve() / ".pywich"
