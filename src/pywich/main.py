@@ -1,5 +1,6 @@
 from os import getenv
 from pathlib import Path
+import logging
 
 import click
 from dotenv import dotenv_values
@@ -13,7 +14,8 @@ from selenium.webdriver.chrome.service import Service
 
 
 # NOTE: to be synced with pyproject.toml version field
-__version__ = "0.1.3"
+__version__ = "0.2.0"
+
 
 HELP = """
 ===== PyWiCh ===== 
@@ -24,25 +26,34 @@ The following options are implemented:
 """
 
 
-@click.option("--version", is_flag=True)
-@click.option("--help", is_flag=True)
 @click.command()
-def main_app(version, help):
-    if version:
-        print(__version__)
-        exit(0)
-    if help:
-        print(HELP)
-        exit(0)
+@click.version_option(version=__version__, prog_name="PyWiCh")
+@click.help_option(HELP)
+def main_app():
     driver_path = Path(getenv("HOMEPATH")).resolve() / "chromedriver.exe"
 
     profile_path = Path(getenv("HOMEPATH")).resolve() / ".pywich"
+
+    log_path = Path(getenv("HOMEPATH")).resolve() / ".pywich.log"
+    logging.basicConfig(
+        filename=log_path,
+        format="%(asctime)s %(levelname)-8s %(message)s",
+        level=logging.INFO,
+        datefmt="%Y-%m-%d %H:%M:%S",
+    )
+
     if profile_path.exists():
         print("Profile config found")
         values = dotenv_values(profile_path)
         username: str = values["NAME"]
         password: str = values["PASSWORD"]
-        check_wifi(username, password, driver_path)
+
+        try:
+            check_wifi(username, password, driver_path)
+        except Exception as e:
+            logging.info(e)
+            print("Application failed")
+            print(f"The following error occurred:\n\n{e}")
 
     else:
         print("Profile config not found")
