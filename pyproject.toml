@@ -19,7 +19,7 @@ name = "pywich"  # Required
 # https://packaging.python.org/guides/single-sourcing-package-version/
 #NOTE: also update main.py --version option
 # version = "0.1.2"  # Required
-dynamic = ["version"]
+dynamic = ["version", "dependencies"]
 
 # This is a one-line description or tagline of what your project does. This
 # corresponds to the "Summary" metadata field:
@@ -99,13 +99,13 @@ classifiers = [  # Optional
 #
 # For an analysis of this field vs pip's requirements files see:
 # https://packaging.python.org/discussions/install-requires-vs-requirements/
-dependencies = [ # Optional
-  "ttkbootstrap @ git+https://github.com/israel-dryer/ttkbootstrap",
-  "click",
-  "selenium",
-  "webdriver-manager",
-  "python-dotenv"
-]
+# dependencies = [ # Optional
+#   "ttkbootstrap @ git+https://github.com/israel-dryer/ttkbootstrap",
+#   "click",
+#   "selenium",
+#   "webdriver-manager",
+#   "python-dotenv"
+# ]
 
 # List additional groups of dependencies here (e.g. development
 # dependencies). Users will be able to install these using the "extras"
@@ -147,6 +147,7 @@ package-dir = {"" = "src"}
 
 [tool.setuptools.dynamic]
 version = {attr = "pywich.__version__"}
+dependencies = {file = "requirements.txt"}
 
 [build-system]
 # These are the assumed default build requirements from pip:
