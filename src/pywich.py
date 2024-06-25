@@ -14,7 +14,7 @@ from selenium.webdriver.chrome.service import Service
 
 
 # NOTE: to be synced with pyproject.toml version field
-__version__ = "0.2.0"
+__version__ = "1.0.0"
 
 
 HELP = """
