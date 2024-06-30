@@ -13,8 +13,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
 
-# NOTE: to be synced with pyproject.toml version field
-__version__ = "1.0.0"
+# NOTE: dynamicly synced with pyproject.toml
+__version__ = "1.0.1"
 
 
 HELP = """
@@ -25,7 +25,7 @@ The following options are implemented:
     --version    Show application version
 """
 
-
+#NOTE: this function is referenced in pyproject.toml
 @click.command()
 @click.version_option(version=__version__, prog_name="PyWiCh")
 @click.help_option(HELP)
@@ -78,10 +78,6 @@ def check_wifi(username: str, password: str, driver_path: str | Path):
         size=(850, 450),
         wifi_data=wifi_data,
         date_data=date_data,
-        # iconphoto=str(scriptpath.parent/'dump/wifi-checker-terminal/Eye_Fi_icon.png')
-        # iconphoto=str(
-        #     scriptpath / "../dump/wifi-checker-terminal/Eye_Fi_Center_icon.png"
-        # ),
         iconphoto=scriptdir.parent / "assets/g6.png",
     )
     app.place_window_center()
@@ -108,9 +104,6 @@ def get_usage(
         return ele
 
     site_url = "https://myslt.slt.lk"
-    # INFO: this is where the problem is
-    # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-    # INFO: posible fix
     service = Service(driver_path)
     driver = webdriver.Chrome(service=service)
     print(f"Starting '{site_url}'...")
