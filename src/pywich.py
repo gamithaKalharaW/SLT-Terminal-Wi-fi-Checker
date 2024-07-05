@@ -89,7 +89,7 @@ def check_wifi(username: str, password: str, driver_path: str | Path):
         size=(850, 450),
         wifi_data=wifi_data,
         date_data=date_data,
-        iconphoto=scriptdir.parent / "pywich.assets/g6.png",
+        iconphoto=scriptdir.parent / "pywich-assets/g6.png",
     )
     app.place_window_center()
     app.focus_set()
