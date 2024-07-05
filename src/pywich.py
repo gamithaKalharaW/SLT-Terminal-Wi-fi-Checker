@@ -14,7 +14,7 @@ from selenium.webdriver.chrome.service import Service
 
 
 # NOTE: dynamicly synced with pyproject.toml
-__version__ = "1.0.1"
+__version__ = "2.0.0"
 
 
 HELP = """
@@ -30,11 +30,22 @@ The following options are implemented:
 @click.version_option(version=__version__, prog_name="PyWiCh")
 @click.help_option(HELP)
 def main_app():
-    driver_path = Path(getenv("HOMEPATH")).resolve() / "chromedriver.exe"
+    
+    ASSETS_PATH = Path(getenv("HOMEPATH")).resolve() / ".pywich"
 
-    profile_path = Path(getenv("HOMEPATH")).resolve() / ".pywich"
+    if not ASSETS_PATH.exists():
+        ASSETS_PATH.mkdir()
 
-    log_path = Path(getenv("HOMEPATH")).resolve() / ".pywich.log"
+
+    driver_path = ASSETS_PATH / "chromedriver.exe"
+    if not driver_path.exists():
+        print(f"Expected chromedriver at {driver_path}")
+        print("Chromedriver not found")
+        exit(1)
+
+    profile_path = ASSETS_PATH / ".pywich"
+
+    log_path = ASSETS_PATH / ".pywich.log"
     logging.basicConfig(
         filename=log_path,
         format="%(asctime)s %(levelname)-8s %(message)s",
@@ -78,7 +89,7 @@ def check_wifi(username: str, password: str, driver_path: str | Path):
         size=(850, 450),
         wifi_data=wifi_data,
         date_data=date_data,
-        iconphoto=scriptdir.parent / "assets/g6.png",
+        iconphoto=scriptdir.parent / "pywich.assets/g6.png",
     )
     app.place_window_center()
     app.focus_set()
