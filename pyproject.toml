@@ -7,13 +7,13 @@ requires-python = ">=3.9"
 license = {file = "LICENSE.txt"}
 keywords = [
   "wifi",
- "SLT",
- "terminal",
- "cli",
- "click",
- "selenium",
- "webdriver",
- "web-automation"
+  "SLT",
+  "terminal",
+  "cli",
+  "click",
+  "selenium",
+  "webdriver",
+  "web-automation"
 ]  
 authors = [
   {name = "Gamitha Wijesinghe", email = "gwijesinghe8+456gh@gmail.com" } 
@@ -40,9 +40,6 @@ test = []
 
 [project.scripts]  
 pywich = "pywich:main_app"
-
-[tool.setuptools]
-package-dir = {"" = "src"}
 
 [tool.setuptools.dynamic]
 version = {attr = "pywich.__version__"}
