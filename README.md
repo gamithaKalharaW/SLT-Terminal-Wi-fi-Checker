@@ -1,3 +1,12 @@
+# ARCHIVED
+
+
+SLT Terminal Wi-fi Checker is now archived and will no longer be maintained.
+Please see [SLT-Usage-Analyzer](https://github.com/gamithaKalharaW/SLT-Usage-Analyzer) for a more up to date, maintained solution.
+SLT Terminal Wi-fi Checker was archived due to difficult maintainance and inability to easily extend its functionality.
+Furthermore, reliance on a webdriver managed by the user was a major draw back.
+[SLT-Usage-Analyzer](https://github.com/gamithaKalharaW/SLT-Usage-Analyzer) was created to address these issues as a complete replacement rather than a patch work of fixes.
+
 
 # SLT Terminal Wi-fi Checker
 
